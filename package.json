@@ -3,7 +3,7 @@
   "version": "0.0.1",
 "main":"app.js",
   "script":{
-    "start":"node app.js"
+    "start":"node ./bin/app.js"
   },
   "dependencies": {
     "express":"latest",
