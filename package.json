@@ -2,7 +2,7 @@
   "name": "squiz",
   "version": "0.0.1",
 "main":"app.js",
-  "script":{
+  "scripts":{
     "start":"node ./bin/app.js"
   },
   "dependencies": {
