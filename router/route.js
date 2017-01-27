@@ -61,7 +61,15 @@ var collection=_db.collection("faculty");
             }
             else
             {
-
+if(c==1)
+{
+    res.send("success");
+    console.log("faculty code:"+f_code+" logged in");
+}
+else
+{
+    res.send("unsuccess");
+}
             }
 
         })
