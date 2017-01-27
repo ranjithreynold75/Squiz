@@ -26,7 +26,7 @@ var collection=_db.collection("faculty");
             email:req.body.email,
             password:req.body.password
         }
-        var cursor=collection.find({_id:req.body.f_code});
+        var cursor=collection.find({_id:req.body.code});
         cursor.count(function(err,c){
 
             if(c==0) {
@@ -36,7 +36,7 @@ var collection=_db.collection("faculty");
                     {   console.log(err);}
                     else {
                         res.send("welcome to squiz family:)");
-                        console.log("signed up:"+res.body.f_code);
+                        console.log("signed up:"+res.body.code);
                     }
 
                 })
