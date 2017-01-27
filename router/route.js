@@ -10,6 +10,7 @@ mc.connect(url,function(err,db){
     _db=db;
 });
 
+var id=require('idgen');
 
 module.exports=function (app) {
 
@@ -77,6 +78,42 @@ else
 
 
     })
+
+
+    app.post("/faculty_generate",function(req,res){
+
+    var quiz_id=id(8);
+        res.send(quiz_id);
+    });
+
+    app.post("/faculty_quiz_upload",function(req,res){
+
+        var quiz=db.collection('quiz');
+        var faculty=db.collection('faculty');
+        var data1={
+            _id:req.body.id,
+            f_code:req.body.code,
+            q_name:req.body.name,
+            s_name:req.body.s_name,
+            slot:req.body.slot,
+            duration:req.body.duration,
+            date:req.body.date,
+            no_questions:req.body.no_questions,
+            time:req.body.time
+
+        }
+quiz.insertOne(data,function(err){
+    if(err) {
+        console.log(err);
+    res.send("unsuccess");
+    }
+    else
+    res.send("success");
+})
+
+
+    })
+
 
 
 }
