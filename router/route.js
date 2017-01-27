@@ -53,7 +53,7 @@ var collection=_db.collection("faculty");
         var f_code=req.body.code;
         var password=req.body.password;
         var collection=_db.collection("faculty");
-        var curser=collection.find({_id:f_code,password:password});
+        var curser=collection.find({_id:code,password:password});
         curser.count(function(err,c){
             if(err)
             {
@@ -64,7 +64,7 @@ var collection=_db.collection("faculty");
 if(c==1)
 {
     res.send("success");
-    console.log("faculty code:"+f_code+" logged in");
+    console.log("faculty code:"+code+" logged in");
 }
 else
 {
