@@ -50,7 +50,7 @@ var collection=_db.collection("faculty");
 
     app.post("/faculty_login",function(req,res){
 
-        var f_code=req.body.f_code;
+        var f_code=req.body.code;
         var password=req.body.password;
         var collection=_db.collection("faculty");
         var curser=collection.find({_id:f_code,password:password});
