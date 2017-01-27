@@ -21,12 +21,12 @@ module.exports=function (app) {
     app.post("/faculty_signup",function(req,res){
 var collection=_db.collection("faculty");
         var data={
-            _id:res.body.f_code,
-            name:res.body.name,
-            email:res.body.email,
-            password:res.body.password
+            _id:req.body.code,
+            name:req.body.name,
+            email:req.body.email,
+            password:req.body.password
         }
-        var cursor=collection.find({_id:res.body.f_code});
+        var cursor=collection.find({_id:req.body.f_code});
         cursor.count(function(err,c){
 
             if(c==0) {
@@ -47,5 +47,28 @@ var collection=_db.collection("faculty");
             }
         })
     })
+
+    app.post("/faculty_login",function(req,res){
+
+        var f_code=req.body.f_code;
+        var password=req.body.password;
+        var collection=_db.collection("faculty");
+        var curser=collection.find({_id:f_code,password:password});
+        curser.count(function(err,c){
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+
+            }
+
+        })
+
+
+
+    })
+
 
 }
