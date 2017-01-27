@@ -88,8 +88,8 @@ else
 
     app.post("/faculty_quiz_upload",function(req,res){
 
-        var quiz=db.collection('quiz');
-        var faculty=db.collection('faculty');
+        var quiz=_db.collection('quiz');
+        var faculty=_db.collection('faculty');
         var data1={
             _id:req.body.id,
             f_code:req.body.code,
