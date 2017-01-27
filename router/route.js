@@ -35,7 +35,7 @@ var collection=_db.collection("faculty");
                     if (err)
                     {   console.log(err);}
                     else {
-                        res.send("welcome to squiz family:)");
+                        res.send("success");
                         console.log("signed up:"+res.body.code);
                     }
 
