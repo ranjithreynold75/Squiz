@@ -8,7 +8,8 @@
   "dependencies": {
     "express":"latest",
     "mongodb":"latest",
-    "body-parser":"latest"
+    "body-parser":"latest",
+    "idgen":"latest"
   },
   "author":"squizdevteam",
   "licence":"VIT",
