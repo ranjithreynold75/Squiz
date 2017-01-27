@@ -90,7 +90,7 @@ else
 
         var quiz=_db.collection('quiz');
         var faculty=_db.collection('faculty');
-        var data1={
+        var data={
             _id:req.body.id,
             f_code:req.body.code,
             q_name:req.body.name,
