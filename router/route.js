@@ -11,12 +11,14 @@ mc.connect(url,function(err,db){
 });
 
 var id=require('idgen');
-
+var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
 
 
-    app.post("/mainpage",function(req,res){
+
+
+    app.post("/mainpage",up,function(req,res){
         var code=req.body.code;
         var collection=_db.collection("quiz");
         console.log(code);
@@ -27,7 +29,7 @@ module.exports=function (app) {
             else
             {
                 console.log(data);
-                res.json(data);
+             res.send(json.stringify(data));
 
             }
 
