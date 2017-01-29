@@ -11,8 +11,32 @@ mc.connect(url,function(err,db){
 });
 
 var id=require('idgen');
-
+//var urlencoder=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
+
+
+
+    app.post("/mainpage",function(req,res){
+        var code=req.body.code;
+        var collection=_db.collection("quiz");
+      //  console.log(code);
+        collection.find({f_code:code}).toArray(function(err,data){
+            if(err){
+                console.log("mainpage error");
+            }
+            else
+            {
+                console.log(data);
+                res.json(data);
+
+            }
+
+        });
+
+    })
+
+
+
 
 
     app.get("/",function(req,res){
@@ -113,6 +137,8 @@ quiz.insertOne(data,function(err){
 
 
     })
+
+
 
 
 
