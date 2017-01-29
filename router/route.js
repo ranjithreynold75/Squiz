@@ -11,7 +11,7 @@ mc.connect(url,function(err,db){
 });
 
 var id=require('idgen');
-//var urlencoder=bodyparser.urlencoded({extended:false});
+
 module.exports=function (app) {
 
 
@@ -19,7 +19,7 @@ module.exports=function (app) {
     app.post("/mainpage",function(req,res){
         var code=req.body.code;
         var collection=_db.collection("quiz");
-      //  console.log(code);
+        console.log(code);
         collection.find({f_code:code}).toArray(function(err,data){
             if(err){
                 console.log("mainpage error");
@@ -35,7 +35,10 @@ module.exports=function (app) {
 
     })
 
-
+app.post("/sample",function(req,res){
+    res.send(req.body.code);
+    console.log(req.body.code);
+})
 
 
 
@@ -77,6 +80,7 @@ var collection=_db.collection("faculty");
 
         var f_code=req.body.code;
         var password=req.body.password;
+        console.log(f_code);
         var collection=_db.collection("faculty");
         var curser=collection.find({_id:f_code,password:password});
         curser.count(function(err,c){
