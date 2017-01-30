@@ -28,8 +28,13 @@ module.exports=function (app) {
             }
             else
             {
-                console.log(data);
-             res.send(JSON.stringify(data));
+                var data1={
+                    details:[
+                        data
+                    ]
+                }
+                console.log(data1);
+             res.send(JSON.stringify(data1));
 
             }
 
