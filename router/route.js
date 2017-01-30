@@ -29,9 +29,8 @@ module.exports=function (app) {
             else
             {
                 var data1={
-                    details:[
-                        data
-                    ]
+                    details:data
+
                 }
                 console.log(data1);
              res.send(JSON.stringify(data1));
