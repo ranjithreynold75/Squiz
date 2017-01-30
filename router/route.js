@@ -29,7 +29,7 @@ module.exports=function (app) {
             else
             {
                 console.log(data);
-             res.send(json.stringify(data));
+             res.send(JSON.stringify(data));
 
             }
 
