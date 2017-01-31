@@ -148,6 +148,7 @@ else
         var faculty=_db.collection('faculty');
         var data={
             _id:req.body.id,
+          c_code:req.body.c_code,
             f_code:req.body.code,
             q_name:req.body.name,
             s_name:req.body.s_name,
