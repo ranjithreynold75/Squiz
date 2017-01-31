@@ -18,7 +18,7 @@ app.post("/view_quiz",function(req,res){
     var qid=req.body.id;
 
     var collection=_db.collection("quiz");
-    collection.find({_d:qid},function(err,data){
+    collection.find({_id:qid},function(err,data){
         if(err)
             console.log(err);
         else
