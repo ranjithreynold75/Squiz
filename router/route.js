@@ -31,7 +31,7 @@ app.post("/view_quiz",function(req,res){
             }
         res.send(JSON.stringify(data1));
         }
-    }))
+    })
 
 
 })
