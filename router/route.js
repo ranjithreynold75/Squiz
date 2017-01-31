@@ -2,9 +2,11 @@ var bodyparser=require('body-parser');
 //var url='mongodb://localhost:27017/squiz';
 var url="mongodb://squiz:letsdoquiz@ds056419.mlab.com:56419/squiz";
 
+var path=require('path');
+
+
 var m=require('mongodb');
 var mc=m.MongoClient;
-
 var _db;
 mc.connect(url,function(err,db){
     _db=db;
@@ -18,9 +20,10 @@ app.post("/view_quiz",function(req,res){
     var qid=req.body.id;
 
     var collection=_db.collection("quiz");
-    collection.find({_id:qid},function(err,data){
-        if(err)
+    collection.find({_id:qid}).toArray(function(err,data){
+        if(err) {
             console.log(err);
+        }
         else
         {
             var data1={
@@ -28,7 +31,7 @@ app.post("/view_quiz",function(req,res){
             }
         res.send(JSON.stringify(data1));
         }
-    })
+    }))
 
 
 })
@@ -60,15 +63,15 @@ app.post("/view_quiz",function(req,res){
 
     })
 
-app.post("/sample",function(req,res){
-    res.send(req.body.code);
-    console.log(req.body.code);
-})
+
 
 
 
     app.get("/",function(req,res){
-        res.send("Squiz vit is online");
+//res.sendFile(path.join(__dirname, '../public', 'index1.html'));
+        //res.write("../public/index.html");
+        res.sendFile(path.join(__dirname,'../public','index.html'));
+
     })
 
     app.post("/faculty_signup",function(req,res){
@@ -168,7 +171,10 @@ quiz.insertOne(data,function(err){
     })
 
 
-
+app.get("/download",function(req,res){
+    var file="../favicon.ico";
+    res.download(file);
+})
 
 
 }

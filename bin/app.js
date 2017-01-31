@@ -13,6 +13,7 @@ next();
 app.use(notify);
 
 app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public/image'));
 
 
 
