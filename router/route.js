@@ -14,6 +14,25 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
+app.post("/view_quiz",function(req,res){
+    var qid=req.body.id;
+
+    var collection=_db.collection("quiz");
+    collection.find({_d:qid},function(err,data){
+        if(err)
+            console.log(err);
+        else
+        {
+            var data1={
+                details:data
+            }
+        res.send(JSON.stringify(data1));
+        }
+    })
+
+
+})
+
 
 
 
