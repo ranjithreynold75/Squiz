@@ -174,7 +174,7 @@ quiz.insertOne(data,function(err){
 
 app.get("/download",function(req,res){
    // console.log(__dirname);
-    var file="../public/image/app_icon.png";
+    var file=__dirname+"/app/app_icon.png";
     res.download(file);
 })
 
