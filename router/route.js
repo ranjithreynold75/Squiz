@@ -156,9 +156,7 @@ else
             duration:req.body.duration,
             date:req.body.date,
             no_questions:req.body.no_questions,
-            time:req.body.time,
-            no_of_students:0
-
+            time:req.body.time
         }
 quiz.insertOne(data,function(err){
     if(err) {
@@ -178,17 +176,23 @@ app.get("/download",function(req,res){
     res.download(file);
 })
 
+
 app.post("/student_request",function(req,res){
     var q_id=req.body.id;
     var regno=req.body.no;
-    var data=[{
+    var data={
         regno:regno,
         mark:0,
         access:"no"
-    }];
+    };
+
+
 
     var collection=_db.collection('quiz');
-    collection.updateOne({_id:q_id},{$set:data});
+
+     collection.updateOne({_id:q_id},{$push:{students:data}});
+res.send("success");
+
 })
 
 
