@@ -180,10 +180,12 @@ app.get("/download",function(req,res){
 app.post("/student_request",function(req,res){
     var q_id=req.body.id;
     var regno=req.body.no;
+    var set=req.body.set;
     var data={
         regno:regno,
         mark:0,
-        access:"no"
+        access:"no",
+        set:set
     };
 
 
