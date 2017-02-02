@@ -156,7 +156,8 @@ else
             duration:req.body.duration,
             date:req.body.date,
             no_questions:req.body.no_questions,
-            time:req.body.time
+            time:req.body.time,
+            sets:req.body.sets
         }
 quiz.insertOne(data,function(err){
     if(err) {
@@ -180,12 +181,12 @@ app.get("/download",function(req,res){
 app.post("/student_request",function(req,res){
     var q_id=req.body.id;
     var regno=req.body.no;
-    var set=req.body.set;
+    var sets=req.body.sets;
     var data={
         regno:regno,
         mark:0,
         access:"no",
-        set:set
+        sets:sets
     };
 
 
