@@ -79,10 +79,6 @@ app.get("/apk_upload",function(request,response)
 {
     response.sendfile(path1.join(__dirname,'../public','upload.html'));
 });
-
-
-
-
     app.post("/faculty_signup",function(req,res){
 var collection=_db.collection("faculty");
         var data={
