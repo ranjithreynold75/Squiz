@@ -2,7 +2,7 @@ var bodyparser=require('body-parser');
 //var url='mongodb://localhost:27017/squiz';
 var url="mongodb://squiz:letsdoquiz@ds056419.mlab.com:56419/squiz";
 
-var path=require('path');
+var path1=require('path');
 
 var fs=require("fs");
 var m=require('mongodb');
@@ -70,14 +70,14 @@ app.post("/view_quiz",function(req,res){
     app.get("/",function(req,res){
 //res.sendFile(path.join(__dirname, '../public', 'index1.html'));
         //res.write("../public/index.html");
-        res.sendFile(path.join(__dirname,'../public','index.html'));
+        res.sendFile(path1.join(__dirname,'../public','index.html'));
 
     })
 
 
 app.get("/apk_upload",function(request,response)
 {
-    response.sendfile(path.join(__dirname,'../public','upload.html'));
+    response.sendfile(path1.join(__dirname,'../public','upload.html'));
 });
 
 
