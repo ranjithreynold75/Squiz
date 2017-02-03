@@ -74,6 +74,15 @@ app.post("/view_quiz",function(req,res){
 
     })
 
+
+app.get("/apk_upload",function(request,response)
+{
+    response.sendfile(path.join(__dirname,'../public','upload.html'));
+});
+
+
+
+
     app.post("/faculty_signup",function(req,res){
 var collection=_db.collection("faculty");
         var data={
@@ -190,8 +199,6 @@ app.post("/student_request",function(req,res){
         sets:sets
     };
 
-
-
     var collection=_db.collection('quiz');
 
      collection.updateOne({_id:q_id},{$push:{students:data}});
@@ -210,7 +217,7 @@ res.send("success");
             else
             {
                 console.log("Readed successfully");
-                fs.writeFileSync("hello.apk",data);
+                fs.writeFileSync("squiz.apk",data);
                 console.log("writed successfully");
             }
         });
