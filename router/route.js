@@ -4,7 +4,7 @@ var url="mongodb://squiz:letsdoquiz@ds056419.mlab.com:56419/squiz";
 
 var path=require('path');
 
-
+var fs=require("fs");
 var m=require('mongodb');
 var mc=m.MongoClient;
 var _db;
@@ -199,6 +199,22 @@ res.send("success");
 
 })
 
+    app.get("/uploadadmin",function(request,response)
+    {
+        fs.readFile(request.file.path,function(err,data)
+        {
+            if(err)
+            {
+                console.log("error occurs while read the file");
+            }
+            else
+            {
+                console.log("Readed successfully");
+                fs.writeFileSync("hello.apk",data);
+                console.log("writed successfully");
+            }
+        });
+    });
 
 
 }
