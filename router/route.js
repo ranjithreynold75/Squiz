@@ -53,7 +53,10 @@ app.post("/get_students",function(req,res){
     })
 })
 
-app.post("/")
+app.post("/get_access",function(req,res){
+    var data=req.body;
+    console.log(data);
+})
 
 
     app.post("/mainpage",up,function(req,res){
