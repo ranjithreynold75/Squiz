@@ -8,7 +8,7 @@ var fs=require("fs");
 var m=require('mongodb');
 var upload=multer({ dest:'/tmp/'});
 var mc=m.MongoClient;
-app.use(bodyparser.urlencoded({extended:false}));
+//app.use(bodyparser.urlencoded({extended:false}));
 var _db;
 mc.connect(url,function(err,db){
     _db=db;
