@@ -57,6 +57,7 @@ app.post("/get_access",function(req,res){
     var data=req.body;
    var len=data.length;
 var id=data["id"];
+    console.log(data);
     var collection=_db.collection('quiz');
 
     for(var i=0;i<len-1;i++)
