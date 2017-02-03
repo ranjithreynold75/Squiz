@@ -74,7 +74,7 @@ app.post("/get_access",function(req,res){
                     details:data
 
                 }
-                console.log(data1);
+               // console.log(data1);
              res.send(JSON.stringify(data1));
 
             }
