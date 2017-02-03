@@ -62,7 +62,7 @@ var id=data["id"];
 
     for(var i=0;i<len-1;i++)
     {
-    collection.updateOne({_id:id,"students.access":"no","students.regno":data[i]},{$set:{"students.access":"yes"}})
+    collection.updateOne({_id:id,"students.access":"no","students.regno":data[i]},{$set:{"students.$.access":"yes"}})
     }
 
 
