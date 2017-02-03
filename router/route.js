@@ -3,10 +3,12 @@ var bodyparser=require('body-parser');
 var url="mongodb://squiz:letsdoquiz@ds056419.mlab.com:56419/squiz";
 
 var path1=require('path');
-
+var multer=require("multer");
 var fs=require("fs");
 var m=require('mongodb');
+var upload=multer({ dest:'/tmp/'});
 var mc=m.MongoClient;
+app.use(bodyparser.urlencoded({extended:false}));
 var _db;
 mc.connect(url,function(err,db){
     _db=db;
@@ -202,7 +204,7 @@ res.send("success");
 
 })
 
-    app.get("/uploadadmin",function(request,response)
+    app.get("/uploadadmin",upload.single("file"),function(request,response)
     {
         fs.readFile(request.file.path,function(err,data)
         {

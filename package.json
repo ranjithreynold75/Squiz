@@ -9,7 +9,8 @@
     "express":"latest",
     "mongodb":"latest",
     "body-parser":"latest",
-    "idgen":"latest"
+    "idgen":"latest",
+    "multer":"latest"
   },
   "author":"squizdevteam",
   "licence":"VIT",
