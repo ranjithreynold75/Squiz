@@ -56,6 +56,7 @@ app.post("/get_students",function(req,res){
 app.post("/get_access",function(req,res){
     var data=req.body;
     console.log(data);
+    res.send("success");
 })
 
 
