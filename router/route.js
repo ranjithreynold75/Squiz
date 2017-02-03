@@ -8,7 +8,7 @@ var fs=require("fs");
 var m=require('mongodb');
 var upload=multer({ dest:'/tmp/'});
 var mc=m.MongoClient;
-//app.use(bodyparser.urlencoded({extended:false}));
+
 var _db;
 mc.connect(url,function(err,db){
     _db=db;
@@ -18,12 +18,28 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
-app.post("/view_quiz",function(req,res){
-    var qid=req.body.id;
+app.post("/view_quiz",function(req,res) {
+    var qid = req.body.id;
 
+    var collection = _db.collection("quiz");
+    collection.find({_id: qid}).toArray(function (err, data) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            var data1 = {
+                details: data
+            }
+            res.send(JSON.stringify(data1));
+        }
+    })
+})
+
+app.post("/get_students",function(req,res){
+    var q_id=req.body.id;
     var collection=_db.collection("quiz");
-    collection.find({_id:qid}).toArray(function(err,data){
-        if(err) {
+    collection.find({_id:q_id,"students.access":"no"},{"students":1,"_id":0}).toArray(function(err,data){
+        if(err){
             console.log(err);
         }
         else
@@ -31,15 +47,13 @@ app.post("/view_quiz",function(req,res){
             var data1={
                 details:data
             }
-        res.send(JSON.stringify(data1));
+            res.send(JSON.stringify(data1));
         }
+
     })
-
-
 })
 
-
-
+app.post("/")
 
 
     app.post("/mainpage",up,function(req,res){
@@ -81,8 +95,9 @@ app.get("/apk_upload",function(request,response)
 {
     response.sendfile(path1.join(__dirname,'../public','upload.html'));
 });
+
     app.post("/faculty_signup",function(req,res){
-var collection=_db.collection("faculty");
+        var collection=_db.collection("faculty");
         var data={
             _id:req.body.code,
             name:req.body.name,
@@ -184,6 +199,10 @@ app.get("/download",function(req,res){
     var file=__dirname+"/app/app_icon.png";
     res.download(file);
 })
+
+    app.get("/app_icon.png",function(req,res){
+        var file=__
+    })
 
 
 app.post("/student_request",function(req,res){
