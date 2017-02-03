@@ -55,7 +55,7 @@ app.post("/get_students",function(req,res){
 
 app.post("/get_access",function(req,res){
     var data=req.body;
-    console.log(data[0]);
+    console.log(data.count);
 
 
     res.send("success");
