@@ -55,7 +55,14 @@ app.post("/get_students",function(req,res){
 
 app.post("/get_access",function(req,res){
     var data=req.body;
-    console.log(data.length);
+   var len=data.length;
+var id=data["id"];
+    var collection=_db.collection('quiz');
+
+    for(var i=0;i<len-1;i++)
+    {
+    collection.updateOne({_id:id,"students.access":"no","students.regno":data[i]},{$set:{"students.access":"yes"}})
+    }
 
 
     res.send("success");
