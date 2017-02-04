@@ -115,7 +115,7 @@ var id=data["id"];
 
     app.post("/admin_autho",function(req,res){
 console.log(req.body);
-        if(req.body!=null) {
+        if(req.body.code!=''&&req.body.password!='') {
             var collection = _db.collection('admin');
             collection.find({_id: req.body.code, password: req.body.password}).toArray(function (err, x) {
                 if (err)
@@ -123,6 +123,10 @@ console.log(req.body);
                 else {
                     if(x['_id']==req.body.code&&x['password']==req.body.password)
                     res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
+                    else
+                    {
+                        res.send("invalid credential");
+                    }
                 }
 
             })
