@@ -114,7 +114,7 @@ var id=data["id"];
     })
 
     app.post("/admin_autho",function(req,res){
-
+console.log(req.body);
         if(req.body!=null) {
             var collection = _db.collection('admin');
             collection.find({_id: req.body.code, password: req.body.password}).toArray(function (err, x) {
