@@ -49,13 +49,13 @@ collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'
             console.log(err);
         }
         else{
-            console.log(data.students.length);
+            console.log(data.length);
             console.log(data[0]["students"]);
 
             var data1={
                 details:data
             }
-            console.log(data1.length);
+            console.log(data1.details.length);
             console.log(JSON.stringify(data1));
             res.send(JSON.stringify(data1));
         }
