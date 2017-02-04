@@ -114,8 +114,25 @@ var id=data["id"];
     })
 
     app.post("/admin_autho",function(req,res){
-        res.send("welcome admin");
-    })
+
+        if(req.body!=null) {
+            var collection = _db.collection('admin');
+            collection.find({_id: req.body.code, password: req.body.password}).toArray(function (err, x) {
+                if (err)
+                    console.log(err);
+                else {
+                    res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
+                }
+
+            })
+
+
+                 }
+                 else
+        {
+            res.sendfile(path1.join(__dirname,'../public','login.html'))
+        }
+        })
 
 
     app.get("/",function(req,res){
