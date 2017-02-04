@@ -122,8 +122,8 @@ console.log(req.body);
                     console.log(err);
                 else {
 
-                    console.log(d);
-                    if(req.body==d) {
+                    console.log(d[0]);
+                    if(d[0]==req.body._id&&d[1]==req.body.password) {
 
                         res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
                     }
