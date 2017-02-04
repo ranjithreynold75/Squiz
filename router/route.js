@@ -50,10 +50,11 @@ collection.aggregate({"$unwind":"$students"},{"$match":{_id:q_id,"students.acces
         }
         else
         {
-            console.log(data);
+
             var data1={
                 details:data
             }
+            console.log(data);
             res.send(JSON.stringify(data1));
         }
 
