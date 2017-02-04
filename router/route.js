@@ -38,12 +38,19 @@ app.post("/view_quiz",function(req,res) {
 app.post("/get_students",function(req,res){
     var q_id=req.body.id;
     var collection=_db.collection("quiz");
-    collection.find({_id:q_id,"students.access":"no"},{"students":1,"_id":0}).toArray(function(err,data){
-        if(err){
+    //db.quiz.aggregate([{$unwind:"$students"},{$match:{"students.access":"no",_id:"lZRxc1I_"}},{$project:{_id:0,students:1}}])
+
+
+
+   // collection.find({_id:q_id,"students.access":"no"},{"students":1,"_id":0}).toArray(function(err,data){
+collection.aggregate({"$match":{_id:q_id}},{"$unwind":"$students"},{"$match":{"students.access":'no'}},function (err,data) {
+
+    if(err){
             console.log(err);
         }
         else
         {
+            console.log(data);
             var data1={
                 details:data
             }
@@ -62,7 +69,7 @@ var id=data["id"];
 
     for(var i=0;i<len-1;i++)
     {
-    collection.updateOne({_id:id,"students.access":"no","students.regno":data[i]},{$set:{"students.$.access":"yes"}})
+    collection.updateOne({_id:id,"students.$.access":"no","students.$.regno":data[i]},{$set:{"students.$.access":"yes"}})
     }
 
 
