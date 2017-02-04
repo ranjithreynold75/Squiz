@@ -49,7 +49,8 @@ collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'
             console.log(err);
         }
         else{
-            console.log(data[0]);
+            console.log(data.length);
+            console.log(data[0]["students"]);
 
             var data1={
                 details:data
