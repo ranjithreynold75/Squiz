@@ -123,7 +123,7 @@ console.log(req.body);
                 else {
 
                     console.log(d);
-                    if(req.body.equals(d)) {
+                    if(req.body==d) {
 
                         res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
                     }
