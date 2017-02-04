@@ -43,7 +43,7 @@ app.post("/get_students",function(req,res){
 
 
    // collection.find({_id:q_id,"students.access":"no"},{"students":1,"_id":0}).toArray(function(err,data){
-collection.aggregate({"$match":{_id:q_id}},{"$unwind":"$students"},{"$match":{"students.access":'no'}},function (err,data) {
+collection.aggregate({"$unwind":"$students"},{"$match":{_id:q_id,"students.access":'no'}},{$project:{_id:0,students:1}},function (err,data) {
 
     if(err){
             console.log(err);
