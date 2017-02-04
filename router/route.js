@@ -124,7 +124,7 @@ console.log(req.body);
                     console.log(err);
                 else {
 
-
+console.log(c);
                     if(c!=0) {
 
                         res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
