@@ -65,14 +65,14 @@ collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.access":'
 
 app.post("/get_access",function(req,res){
     var data=req.body;
-   var sam=JSON.stringify(data);
-    var len=data.length;
+
+    var len=data['len'];
 var id=data["id"];
     console.log(data);
     var collection=_db.collection('quiz');
-    console.log(sam.length);
+    console.log(len);
 //db.quiz.update({_id:"lZRxc1I_","students.access":"no","students.regno":"13mse0075"},{$set:{"students.$.access":"no"}})
-    for(var i=0;i<len-1;i++)
+    for(var i=0;i<len;i++)
     {
     collection.updateOne({_id:id,"students.access":"no","students.regno":data},{$set:{"students.$.access":"yes"}})
     }
