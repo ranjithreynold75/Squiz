@@ -121,8 +121,10 @@ console.log(req.body);
                 if (err)
                     console.log(err);
                 else {
-                    if(x['_id']==req.body.code&&x['password']==req.body.password)
-                    res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
+                    if(x['_id']==req.body.code&&x['password']==req.body.password) {
+                        console.log(x['_id']);
+                        res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
+                    }
                     else
                     {
                         res.send("invalid credential");
