@@ -54,7 +54,7 @@ collection.aggregate({"$unwind":"$students"},{"$match":{_id:q_id,"students.acces
             var data1={
                 details:data
             }
-            console.log(data1);
+            console.log(JSON.stringify(data1));
             res.send(JSON.stringify(data1));
         }
 
