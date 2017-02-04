@@ -238,17 +238,41 @@ app.post("/student_request",function(req,res){
     var q_id=req.body.id;
     var regno=req.body.no;
     var sets=req.body.sets;
-    var data={
-        regno:regno,
-        mark:0,
-        access:"no",
-        sets:sets
-    };
 
-    var collection=_db.collection('quiz');
 
-     collection.updateOne({_id:q_id},{$push:{students:data}});
-res.send("success");
+    var collection=_db.collection(quiz);
+//db.quiz.find({_id:"ARTUBTZP","students.regno":"13mse0074"})
+    var cursor=collection.find({_id:q_id,"students.regno":regno});
+cursor.count(function(err,c){
+    if(err){
+        console.log(err);
+    }
+else
+    {
+      if(c==0)
+      {
+
+          var data={
+              regno:regno,
+              mark:0,
+              access:"no",
+              sets:sets
+          };
+
+          var collection=_db.collection('quiz');
+
+          collection.updateOne({_id:q_id},{$push:{students:data}});
+          res.send("success");
+
+      }
+      else
+      {
+          res.send("already requested");
+      }
+
+    }
+
+})
 
 })
 
