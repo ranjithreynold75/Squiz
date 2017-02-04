@@ -232,7 +232,7 @@ app.get("/download",function(req,res){
     app.get("/app_icon.png",function(req,res){
         var file=__dirname+"/app/app_icon.png";
         console.log("yes");
-        res.send(file);
+        res.sendFile(file);
     })
 
 
