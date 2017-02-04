@@ -117,13 +117,15 @@ var id=data["id"];
 console.log(req.body);
         if(req.body.code!=''&&req.body.password!='') {
             var collection = _db.collection('admin');
-            collection.find({_id: req.body._id, password: req.body.password}).toArray(function (err, d) {
+            var cursor=collection.find({_id: req.body._id, password: req.body.password})
+            cursor.count(function (err,c)
+            {
                 if (err)
                     console.log(err);
                 else {
 
-                    console.log(d[0]);
-                    if(d[0]==req.body._id&&d[1]==req.body.password) {
+
+                    if(c!=0) {
 
                         res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
                     }
