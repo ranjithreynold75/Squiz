@@ -190,7 +190,7 @@ else
     app.post("/faculty_generate",function(req,res){
 
     var quiz_id=id(8);
-        res.send(quiz_id);
+        res.send(quiz_id.toUpperCase());
     });
 
     app.post("/faculty_quiz_upload",function(req,res){
