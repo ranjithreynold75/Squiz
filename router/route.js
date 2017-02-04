@@ -117,10 +117,11 @@ var id=data["id"];
 console.log(req.body);
         if(req.body.code!=''&&req.body.password!='') {
             var collection = _db.collection('admin');
-            collection.find({_id: req.body.code, password: req.body.password}).toArray(function (err, x) {
+            collection.find({_id: req.body.code, password: req.body.password}).toArray(function (err, d) {
                 if (err)
                     console.log(err);
                 else {
+                    var x=JSON.stringify(d);
                     console.log(x['_id']);
                     if(x['_id']==req.body.code&&x['password']==req.body.password) {
 
