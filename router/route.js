@@ -121,8 +121,8 @@ console.log(req.body);
                 if (err)
                     console.log(err);
                 else {
-                    var x=JSON.stringify(d);
-                    console.log(x['_id']);
+                    var x=d;
+                    console.log(d);
                     if(x['_id']==req.body.code&&x['password']==req.body.password) {
 
                         res.sendfile(path1.join(__dirname, '../public', 'upload.html'));
