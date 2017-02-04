@@ -69,7 +69,7 @@ app.post("/get_access",function(req,res){
 var id=data["id"];
     console.log(data);
     var collection=_db.collection('quiz');
-    console.log(len);
+    console.log(data.length);
 //db.quiz.update({_id:"lZRxc1I_","students.access":"no","students.regno":"13mse0075"},{$set:{"students.$.access":"no"}})
     for(var i=0;i<len-1;i++)
     {
