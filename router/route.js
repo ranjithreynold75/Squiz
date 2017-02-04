@@ -109,7 +109,13 @@ var id=data["id"];
     })
 
 
+    app.get("/admin_login",function(req,res){
+        res.sendFile(path1.join(__dirname,'../public','login.html'));
+    })
 
+    app.post("/admin_autho",function(req,res){
+        res.send("welcome admin");
+    })
 
 
     app.get("/",function(req,res){
@@ -231,7 +237,7 @@ app.get("/download",function(req,res){
 
     app.get("/app_icon.png",function(req,res){
         var file=__dirname+"/app/app_icon.png";
-        console.log("yes");
+
         res.sendFile(file);
     })
 
