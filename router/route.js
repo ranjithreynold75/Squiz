@@ -240,7 +240,7 @@ app.post("/student_request",function(req,res){
     var sets=req.body.sets;
 
 
-    var collection=_db.collection(quiz);
+    var collection=_db.collection("quiz");
 //db.quiz.find({_id:"ARTUBTZP","students.regno":"13mse0074"})
     var cursor=collection.find({_id:q_id,"students.regno":regno});
 cursor.count(function(err,c){
