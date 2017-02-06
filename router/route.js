@@ -38,15 +38,12 @@ module.exports=function (app) {
 
 
 
-}
+})
 
 
 
 
-        res.send("uploaded");
 
-
-    })
 
 
 
