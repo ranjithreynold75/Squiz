@@ -19,7 +19,7 @@ var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
     app.post("/q_upload",function(req,res){
-        //  console.log(req.body);
+         console.log(req.body);
         res.send("uploaded");
     })
 
