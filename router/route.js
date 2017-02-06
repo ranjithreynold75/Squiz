@@ -30,6 +30,7 @@ module.exports=function (app) {
                 console.log(err);
             }
             else {
+                console.log(data.length);
       if(data.length!=0)
       {
           res.send("yes");
