@@ -18,9 +18,43 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
+    app.post("/showme",function(req,res){
+        var q_id=req.body.id;
+        var regno=req.body.regno;
+        var collection=_db.collection('quiz');
+        //db.quiz.aggregate([{$unwind:"$students"},{$match:{"students.access":"no",_id:"lZRxc1I_"}},{$project:{_id:0,students:1}}])
+
+        collection.aggregate({$unwind:"$students"},{$match:{_id:q_id,"students.regno":regno,"students.access":'yes'}},{$project:{_id:0,students:1}},function (err,data) {
+
+            if(err){
+                console.log(err);
+            }
+            else {
+      if(data.length!=0)
+      {
+          res.send("yes");
+      }
+      else
+      {
+          res.send("no");
+      }
+
+            }
+
+        })
+
+
+
+
+
+    })
+
     app.post("/start_quiz",function(req,res){
 
         var q_id=req.body.id;
+        //var regno=req.body.regno;
+
+
       var collection=_db.collection('questions');
         collection.find({_id:q_id},{q_id:0},function(err,data){
             if(err)
