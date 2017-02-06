@@ -331,7 +331,7 @@ else
 
 
     app.post("q_upload",function(req,res){
-        console.log(req.body);
+      //  console.log(req.body);
         res.send("uploaded");
     })
 
