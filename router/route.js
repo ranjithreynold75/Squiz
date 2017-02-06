@@ -18,11 +18,30 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
-    app.post("/q_upload",function(req,res){
+    app.post("/start_quiz",function(req,res){
 
-        console.log(req.body.s);
-        console.log(req.body.no);
-        console.log(req.body.id);
+        var q_id=req.body.id;
+      var collection=_db.collection('questions');
+        collection.find({_id:q_id},{q_id:0},function(err,data){
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                var data1={
+                    details:data
+                }
+                res.send(JSON.stringify(data1));
+            }
+        })
+
+
+
+}
+
+
+
 
         res.send("uploaded");
 
