@@ -57,7 +57,7 @@ module.exports=function (app) {
 
 
       var collection=_db.collection('questions');
-        collection.find({_id:q_id},{q_id:0},function(err,data){
+        collection.find({_id:q_id},{q_id:0}).toArray(function(err,data){
             if(err)
             {
                 console.log(err);
