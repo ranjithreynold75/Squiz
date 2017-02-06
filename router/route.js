@@ -18,7 +18,14 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
-app.post("/view_quiz",function(req,res) {
+    app.post("q_upload",function(req,res){
+        //  console.log(req.body);
+        res.send("uploaded");
+    })
+
+
+
+    app.post("/view_quiz",function(req,res) {
     var qid = req.body.id;
 
     var collection = _db.collection("quiz");
@@ -330,10 +337,6 @@ else
     });
 
 
-    app.post("q_upload",function(req,res){
-      //  console.log(req.body);
-        res.send("uploaded");
-    })
 
 
 
