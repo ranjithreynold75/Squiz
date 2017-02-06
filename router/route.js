@@ -24,6 +24,7 @@ module.exports=function (app) {
         console.log(req.body.no);
         console.log(req.body.id);
 
+        res.send("uploaded");
 
 
     })
