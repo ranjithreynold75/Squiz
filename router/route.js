@@ -3,10 +3,13 @@ var bodyparser=require('body-parser');
 var url="mongodb://squiz:letsdoquiz@ds056419.mlab.com:56419/squiz";
 
 var path1=require('path');
-var multer=require("multer");
+
 var fs=require("fs");
 var m=require('mongodb');
-var upload=multer({ dest:'/tmp/'});
+
+var multer=require('multer');
+var upload=multer({ dest:'app/'});
+
 var mc=m.MongoClient;
 
 var _db;
@@ -378,22 +381,15 @@ else
 
     app.get("/uploadadmin",upload.single("file"),function(request,response)
     {
-      var app_file;
-        if(!request.files){
-            res.send('no file uploaded');
-            return;
+fs.readFile(request.file.path,function(err,data){
+    var filename=__dirname+"/"+req.file;
+    var newpath=__dirname+"/app/"+req.file.originalname+path.extname(filename);
+    fs.writeFile(newpath,data,function(err){
+        if(err){
+            console.log("image writing error");
         }
-        app_file=req.files.app;
-
-        app_file.mv('/app/app.jpg', function(err) {
-            if (err) {
-                res.status(500).send(err);
-            }
-            else {
-                res.send('File uploaded!');
-            }
-        });
-
+    })
+})
 
     });
 
