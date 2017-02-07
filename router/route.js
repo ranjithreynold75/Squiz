@@ -378,19 +378,23 @@ else
 
     app.get("/uploadadmin",upload.single("file"),function(request,response)
     {
-        fs.readFile(request.app.path,function(err,data)
-        {
-            if(err)
-            {
-                console.log("error occurs while read the file");
+      var app_file;
+        if(!request.files){
+            res.send('no file uploaded');
+            return;
+        }
+        app_file=req.files.app;
+
+        app_file.mv('/app/app.jpg', function(err) {
+            if (err) {
+                res.status(500).send(err);
             }
-            else
-            {
-                console.log("Readed successfully");
-                fs.writeFileSync("squiz.jpg",data);
-                console.log("writed successfully");
+            else {
+                res.send('File uploaded!');
             }
         });
+
+
     });
 
 

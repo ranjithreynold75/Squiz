@@ -1,6 +1,7 @@
 var express=require('express');
 
 var app=express();
+var fileupload=require('express-fileupload');
 
 var bodyparser=require('body-parser');
 
@@ -11,7 +12,7 @@ next();
 
 
 app.use(notify);
-
+app.use(fileupload());
 app.use(express.static(__dirname+'/public'));
 app.use(express.static(__dirname+'/public/image'));
 
