@@ -378,7 +378,7 @@ else
 
     app.get("/uploadadmin",upload.single("file"),function(request,response)
     {
-        fs.readFile(request.file.path,function(err,data)
+        fs.readFile(request.app.path,function(err,data)
         {
             if(err)
             {
