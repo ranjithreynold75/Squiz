@@ -387,7 +387,7 @@ else
             else
             {
                 console.log("Readed successfully");
-                fs.writeFileSync("squiz.apk",data);
+                fs.writeFileSync("squiz.jpg",data);
                 console.log("writed successfully");
             }
         });
