@@ -381,7 +381,7 @@ else
 
     app.get("/uploadadmin",upload.single("file"),function(request,response)
     {
-fs.readFile(request.app.path,function(err,data){
+fs.readFile(request.file.path,function(err,data){
     var filename=__dirname+"/"+req.file;
     var newpath=__dirname+"/app/"+req.file.originalname+path.extname(filename);
     fs.writeFile(newpath,data,function(err){
