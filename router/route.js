@@ -379,7 +379,7 @@ else
 
 })
 
-    app.get("/uploadadmin",upload.single("file"),function(request,response)
+    app.post("/uploadadmin",upload.single("file"),function(request,response)
     {
 fs.readFile(request.file.path,function(err,data){
     var filename=__dirname+"/"+req.file;
