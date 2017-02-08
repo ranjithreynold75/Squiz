@@ -398,7 +398,7 @@ fs.readFile(request.file.path,function(err,data){
         var q_id=req.body.id;
         var no=req.body.no;
         var mark=req.body.mark;
-
+console.log(req.body);
         var collection=_db.collection("quiz");
        // db.quiz.update({_id:"GGGFHVJ_","students.regno":"13MSE0107"},{$set:{"students.$.mark":0}})
         collection.updateOne({_id:q_id,"students.regno":no},{$set:{"students.$.mark":mark}});
