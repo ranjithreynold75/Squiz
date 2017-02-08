@@ -418,8 +418,11 @@ res.send("success");
             }
             else
             {
-        console.log(JSON.stringify(d));
-                res.send(JSON.stringify(d));
+                var data1={
+                    details:d
+                }
+        console.log(JSON.stringify(data1));
+                res.send(JSON.stringify(data1));
             }
 
         })
