@@ -401,8 +401,8 @@ fs.readFile(request.file.path,function(err,data){
 
         var collection=_db.collection("quiz");
        // db.quiz.update({_id:"GGGFHVJ_","students.regno":"13MSE0107"},{$set:{"students.$.mark":0}})
-        collection.updateOne({_id:q_id,"students.regno":no},{$set:{"students.$.mark":mark,"students.$.access":"no"}});
-
+        collection.updateOne({_id:q_id,"students.regno":no},{$set:{"students.$.mark":mark}});
+collection.updateOne({_id:q_id,"students.regno":no},{$set:{"students.$.access":"no"}});
 res.send("success");
 
 
