@@ -405,6 +405,24 @@ console.log(req.body);
 collection.updateOne({_id:q_id,"students.regno":no},{$set:{"students.$.access":"no"}});
 res.send("success");
 
+    })
+
+    app.post("/get_result",function (req,res) {
+        var q_id=req.body.id;
+
+        var collection=_db.collection("quiz");
+        collection.find({_id:q_id},{_id:0,students:1}).toArray(function (err,d) {
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+        console.log(JSON.stringify(d));
+                res.send(JSON.stringify(d));
+            }
+
+        })
 
 
 
