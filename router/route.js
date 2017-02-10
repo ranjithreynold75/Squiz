@@ -326,7 +326,7 @@ quiz.insertOne(data,function(err){
 
 app.get("/download",function(req,res){
    // console.log(__dirname);
-    var file=__dirname+"/app/squiz.apk";
+    var file=__dirname+"/app/Squiz.apk";
     res.download(file);
 })
 
