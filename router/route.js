@@ -359,7 +359,8 @@ else
               regno:regno,
               mark:0,
               access:"no",
-              sets:sets
+              sets:sets,
+              status:"no"
           };
 
           var collection=_db.collection('quiz');
