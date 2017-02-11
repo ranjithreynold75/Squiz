@@ -21,7 +21,7 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
-    app.post("/update_status",function (req,res) {
+    app.post("/updatestatus",function (req,res) {
         var q_id=req.body.id;
         var regno=req.body.no;
         var collection=_db.collection('quiz');
