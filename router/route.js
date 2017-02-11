@@ -21,6 +21,17 @@ var id=require('idgen');
 var up=bodyparser.urlencoded({extended:false});
 module.exports=function (app) {
 
+    app.post("/update_status",function (req,res) {
+        var q_id=req.body.id;
+        var regno=req.body.no;
+        var collection=_db.collection('quiz');
+        //db.quiz.update({_id:"YEFLAHIA","students.regno":"13MSE0001"},{$set:{"students.$.status":"yes"}})
+
+        collection.updateOne({_id:q_id,"students.regno":regno},{$set:{"students.$.status":"yes"}});
+        res.send("success");
+    })
+
+
     app.post("/showme",function(req,res){
         var q_id=req.body.id;
         var regno=req.body.regno;
