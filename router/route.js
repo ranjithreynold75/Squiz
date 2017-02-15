@@ -444,7 +444,7 @@ res.send("success");
 
     })
 
-app.post("get_review",function (req,res) {
+app.post("/get_review",function (req,res) {
 
 var rate=req.r;
 
