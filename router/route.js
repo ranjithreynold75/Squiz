@@ -446,7 +446,7 @@ res.send("success");
 
 app.post("/get_review",function (req,res) {
 
-var rate=req.r;
+var rate=req.body.r;
 
     var collection=_db.collection('admin');
     collection.insertOne({rate:rate});
