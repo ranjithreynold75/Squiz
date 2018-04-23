@@ -1,6 +1,6 @@
 var bodyparser=require('body-parser');
 //var url='mongodb://localhost:27017/squiz';
-var url="mongodb://squiz:letsdoquiz@ds056419.mlab.com:56419/squiz";
+var url="mongodb://squiz:@ds056419.mlab.com:56419/squiz";
 
 var path1=require('path');
 
